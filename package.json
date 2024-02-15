@@ -1,0 +1,38 @@
+{
+  "name": "text-processor",
+  "version": "1.0.3",
+  "description": "A javascript library combining profanity filtering and sentiment analysis",
+  "main": "./lib/TextProcessor.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -R spec",
+    "docs": "./node_modules/.bin/documentation readme --section API ./lib/TextProcessor.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://[your-repository-url].git"
+  },
+  "keywords": [
+    "profanity",
+    "filter",
+    "sentiment",
+    "analysis"
+  ],
+  "dependencies": {
+    "badwords-list": "^1.0.0",
+    "french-badwords-list": "^1.0.7",
+    "googleapis": "^129.0.0"
+  },
+  "devDependencies": {
+    "better-assert": "1.0.0",
+    "documentation": "^5.3.3",
+    "mocha": "^5.2.0"
+  },
+  "author": "Nikhil Reddy",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
