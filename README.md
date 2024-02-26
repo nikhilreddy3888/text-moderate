@@ -8,6 +8,9 @@ TextProcessor is a JavaScript library devveloped for text analysis. It integrate
 - **Sentiment Analysis**: Assesses the emotional tone of text using the AFINN-165 wordlist and Emoji Sentiment Ranking.
 - **Toxicity Detection**: Evaluates text for potential toxicity via the Perspective API, aiming to support positive communication environments.
 
+## Supported Languages
+English and French for Profanity and Sentiment Analysis, can be extended. Toxicity Detection works for any language.
+
 ## Installation
 
 ```bash
@@ -92,21 +95,37 @@ var result = textProcessor.analyzeSentiment('Le chat est stupide.', { language: 
 console.dir(result);    // Score: -2, Comparative: -0.5
 ```
 
-
-
 ### Toxicity Analysis
 
-```js
-var TextProcessor = require('text-processor');
-const textProcessor = new TextProcessor();
+Analyze text for toxicity with the Perspective API to maintain constructive discourse. This is developed 
 
-const API_KEY = 'your_api_key_here'; // Replace with your actual API key from Google API Services
+```javascript
+const API_KEY = 'your_api_key_here'; // Replace with your Persective API key from Google API Services
+textProcessor.analyzeToxicity("Your text to analyzeSentiment", API_KEY)
+  .then(result => console.log(JSON.stringify(result)))
+  .catch(err => console.error(err));
+```
 
-textProcessor.analyzeToxicity("Your text to analyze", API_KEY).then(result => {
-  console.log(result);
-}).catch(err => {
-  console.error(err);
-});
+Sample output:
+
+```json
+{
+  "attributeScores": {
+    "TOXICITY": {
+      "summaryScore": {
+        "value": 0.021196328,
+        "type": "PROBABILITY"
+      }
+    }
+  },
+  "languages": ["en"],
+  "detectedLanguages": ["en"]
+}
+```
+
+This provides a toxicity score, indicating how likely the text is perceived as toxic, aiding in moderating content effectively.
+
+
 ```
 
 ### API
@@ -326,18 +345,13 @@ This approach leaves you with a mid-point of 0 and the upper and lower bounds ar
 
 Tokenization works by splitting the lines of input string, then removing the special characters, and finally splitting it using spaces. This is used to get list of words in the string.
 
-* * *
 
-## Benchmarks
+## Credits
 
-A primary motivation for designing `sentiment` was performance. As such, it includes a benchmark script within the test directory that compares it against the [Sentimental](https://github.com/thinkroth/Sentimental) module which provides a nearly equivalent interface and approach. Based on these benchmarks, running on a MacBook Pro with Node v6.9.1, `sentiment` is nearly twice as fast as alternative implementations:
+1. https://perspectiveapi.com/
+2. https://github.com/thisandagain/sentiment
+3. https://github.com/MauriceButler/badwords
 
-```bash
-sentiment (Latest) x 861,312 ops/sec ±0.87% (89 runs sampled)
-Sentimental (1.0.1) x 451,066 ops/sec ±0.99% (92 runs sampled)
-```
-
-* * *
 
 ## License
 

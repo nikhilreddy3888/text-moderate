@@ -1,6 +1,6 @@
 {
   "name": "text-processor",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "A javascript library combining profanity filtering and sentiment analysis",
   "main": "./lib/TextProcessor.js",
   "directories": {
