@@ -1,69 +1,75 @@
-# TextProcessor
+# TextModerate
 
-TextProcessor is a JavaScript library devveloped for text analysis. It integrates profanity/badwords filtering, sentiment analysis, and toxicity detection capabilities. By leveraging the AFINN-165 wordlist, Emoji Sentiment Ranking, and the Perspective API, TextProcessor offers a robust toolkit for enhancing content moderation and fostering healthier online interactions.
+TextModerate is a JavaScript library developed for text analysis. It integrates profanity/badwords filtering, sentiment analysis, and toxicity detection capabilities. By leveraging the Badwords list, AFINN-165 wordlist, Emoji Sentiment Ranking, and the Perspective API. TextModerate offers a robust toolkit for enhancing content moderation and fostering healthier online interactions.
 
 ## Features
 
-- **Profanity Filtering**: Detects and filters out profane/bad words from texts, with options for customization.
-- **Sentiment Analysis**: Assesses the emotional tone of text using the AFINN-165 wordlist and Emoji Sentiment Ranking.
-- **Toxicity Detection**: Evaluates text for potential toxicity via the Perspective API, aiming to support positive communication environments.
+-   **Profanity Filtering**: Detects and filters out profane/bad words from texts, with options for customization.
+-   **Sentiment Analysis**: Assesses the emotional tone of text using the AFINN-165 wordlist and Emoji Sentiment Ranking.
+-   **Toxicity Detection**: Evaluates text for potential toxicity via the Perspective API, aiming to support positive communication environments. This is interface to call Perspective API developed by Google.
 
 ## Supported Languages
+
 English and French for Profanity and Sentiment Analysis, can be extended. Toxicity Detection works for any language.
 
 ## Installation
 
 ```bash
-npm install text-processor --save
+npm install text-moderate --save
 ```
 
 ## Usage and Example Outputs
 
+## Profanity Filtering
 ### Profanity Filtering
 
-Censor or identify profanity within text inputs automatically.
+Censor or identify profanity within text inputs automatically. Using badwords-list from  Google's WDYL Project.
 
 ```javascript
-const TextProcessor = require('text-processor');
-const textProcessor = new TextProcessor();
+const TextModerate = require('text-moderate');
+const textModerate = new TextModerate();
 
-console.log(textProcessor.clean("Don't be an ash0le"));
+console.log(textModerate.isProfane("Don't be an ash0le"))
+// Output: True
+
+console.log(textModerate.clean("Don't be an ash0le"));
 // Output: "Don't be an ******"
 ```
 
 ### Placeholder Overrides for Filtering
 
 ```js
-var customTextProcessor = new TextProcessor({ placeHolder: 'x'});
+var customTextModerate = new TextModerate({ placeHolder: 'x'});
 
-customTextProcessor.clean("Don't be an ash0le"); // Don't be an xxxxxx
+customTextModerate.clean("Don't be an ash0le"); // Don't be an xxxxxx
 ```
 
 ### Adding Words to the Blacklist
 
 ```js
-textProcessor.addWords('some', 'bad', 'word');
+textModerate.addWords('some', 'bad', 'word');
 
-textProcessor.clean("some bad word!") // **** *** ****!
+textModerate.clean("some bad word!") // **** *** ****!
 ```
 
 ### Remove words from the blacklist
 
 ```js
-textProcessor.removeWords('hells', 'sadist');
+textModerate.removeWords('hells', 'sadist');
 
-textProcessor.clean("some hells word!"); //some hells word!
+textModerate.clean("some hells word!"); //some hells word!
 ```
 
+This functions helps maintain respectful communication by recognizing and replacing recognized profane words with placeholders.
 
-This function helps maintain respectful communication by replacing recognized profane words with placeholders.
+## Sentiment Dectection
 
 ### Sentiment Analysis
 
 Evaluate textual sentiment, identifying whether the content is positive, neutral, or negative.
 
 ```javascript
-const result = textProcessor.analyzeSentiment('Cats are amazing.');
+const result = textModerate.analyzeSentiment('Cats are amazing.');
 console.dir(result);
 ```
 
@@ -81,7 +87,9 @@ Example output:
 }
 ```
 
-The output demonstrates a positive sentiment score, reflecting the text's overall positive tone.
+The output demonstrates a positive sentiment score, reflecting the text's overall positive tone. 
+
+Here, "comparative" Score can be seen as main metric if it's zero netural and greater 0.5 is positive and less than -0.5 is negative
 
 ### Registering New Language for Sentiment Analysis
 
@@ -89,22 +97,26 @@ The output demonstrates a positive sentiment score, reflecting the text's overal
 var frLanguage = {
   labels: { 'stupide': -2 }
 };
-textProcessor.registerLanguage('fr', frLanguage);
+textModerate.registerLanguage('fr', frLanguage);
 
-var result = textProcessor.analyzeSentiment('Le chat est stupide.', { language: 'fr' });
+var result = textModerate.analyzeSentiment('Le chat est stupide.', { language: 'fr' });
 console.dir(result);    // Score: -2, Comparative: -0.5
 ```
 
+## Toxicity Dectection 
+
 ### Toxicity Analysis
 
-Analyze text for toxicity with the Perspective API to maintain constructive discourse. This is developed 
+Analyze text for toxicity with the Perspective API to maintain constructive discourse. Perspective API is developed and maintianed by Google. 
 
 ```javascript
 const API_KEY = 'your_api_key_here'; // Replace with your Persective API key from Google API Services
-textProcessor.analyzeToxicity("Your text to analyzeSentiment", API_KEY)
+textModerate.analyzeToxicity("Your text to analyzeSentiment", API_KEY)
   .then(result => console.log(JSON.stringify(result)))
   .catch(err => console.error(err));
 ```
+
+The Perspective API is currently free API with rate limit of 60 per minute. (As of 2023 Decemeber) Link: <https://support.perspectiveapi.com/s/docs-get-started?language=en_US>
 
 Sample output:
 
@@ -124,9 +136,8 @@ Sample output:
 ```
 
 This provides a toxicity score, indicating how likely the text is perceived as toxic, aiding in moderating content effectively.
-
-
-```
+According to this paper and experiments:- soft toxicity score is 0.5 and hard toxicty score is 0.7
+Refer to this paper : <https://aclanthology.org/2021.findings-emnlp.210.pdf>
 
 ### API
 
@@ -141,19 +152,22 @@ This provides a toxicity score, indicating how likely the text is perceived as t
 -   [addWords](#addwords)
 -   [removeWords](#removewords)
 -   [registerLanguage](#registerlanguage)
--   [analyzeSentiment](#analyzeSentiment)
+-   [analyzeSentiment](#analyzesentiment)
 -   [analyzeToxicity](#analyzetoxicity)
 -   [tokenize](#tokenize)
 -   [addLanguage](#addlanguage)
+-   [getLanguage](#getlanguage)
+-   [getLabels](#getlabels)
+-   [applyScoringStrategy](#applyscoringstrategy)
 
 #### constructor
 
-TextProcessor constructor.
+TextModerate constructor.
 Combines functionalities of word filtering and sentiment analysis.
 
 **Parameters**
 
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** TextProcessor instance options. (optional, default `{}`)
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** TextModerate instance options. (optional, default `{}`)
     -   `options.emptyList` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Instantiate filter with no blacklist. (optional, default `false`)
     -   `options.list` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Instantiate filter with custom list. (optional, default `[]`)
     -   `options.placeHolder` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Character used to replace profane words. (optional, default `'*'`)
@@ -285,7 +299,7 @@ Applies a scoring strategy for the current token
 -   `cursor` **int** Cursor of the current token being analyzed
 -   `tokenScore` **int** The score of the current token being analyzed
 
-## How it works
+## How Sentiment Analysis works Here
 
 ### AFINN
 
@@ -345,13 +359,11 @@ This approach leaves you with a mid-point of 0 and the upper and lower bounds ar
 
 Tokenization works by splitting the lines of input string, then removing the special characters, and finally splitting it using spaces. This is used to get list of words in the string.
 
-
 ## Credits
 
-1. https://perspectiveapi.com/
-2. https://github.com/thisandagain/sentiment
-3. https://github.com/MauriceButler/badwords
-
+1.  <https://perspectiveapi.com/>
+2.  <https://github.com/thisandagain/sentiment>
+3.  <https://github.com/MauriceButler/badwords>
 
 ## License
 

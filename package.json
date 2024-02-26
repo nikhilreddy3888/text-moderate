@@ -1,14 +1,14 @@
 {
-  "name": "text-processor",
-  "version": "1.0.5",
+  "name": "text-moderate",
+  "version": "1.0.2",
   "description": "A javascript library combining profanity filtering and sentiment analysis",
-  "main": "./lib/TextProcessor.js",
+  "main": "./lib/TextModerate.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec",
-    "docs": "./node_modules/.bin/documentation readme --section API ./lib/TextProcessor.js"
+    "docs": "./node_modules/.bin/documentation readme --section API ./lib/TextModerate.js"
   },
   "repository": {
     "type": "git",
