@@ -359,11 +359,27 @@ This approach leaves you with a mid-point of 0 and the upper and lower bounds ar
 
 Tokenization works by splitting the lines of input string, then removing the special characters, and finally splitting it using spaces. This is used to get list of words in the string.
 
+To incorporate the "Future Improvement" section into your existing documentation while maintaining the flow and structure, you can simply add it right before the "Credits" section. Here's how it would look:
+
+---
+
+## Future Improvements
+
+The development and enhancement of the "text-moderate" library will continue to focus on making the tool more versatile and effective for developers and content managers. Planned future improvements include:
+
+1. **More Languages Support**: Expanding the library to support additional languages for profanity filtering and sentiment analysis, making it more accessible and useful for a global audience.
+
+2. **Sentiment Analysis in a More Robust Way**: Enhancing the sentiment analysis feature to provide deeper insights into the emotional tone of texts, possibly by incorporating machine learning techniques for greater accuracy.
+
+3. **Toxicity Category Attribute Along with Score**: Introducing a detailed breakdown of toxicity attributes (e.g., insult, threat, obscenity) alongside the overall toxicity score to give users a more nuanced understanding of content analysis results.
+
+By focusing on these areas, "text-moderate" aims to remain at the forefront of content moderation technology, providing developers with the tools they need to maintain positive and safe online environments.
+
 ## Credits
 
-1.  <https://perspectiveapi.com/>
-2.  <https://github.com/thisandagain/sentiment>
-3.  <https://github.com/MauriceButler/badwords>
+1. [Perspective API](https://perspectiveapi.com/)
+2. [Sentiment](https://github.com/thisandagain/sentiment)
+3. [Badwords](https://github.com/MauriceButler/badwords)
 
 ## License
 
@@ -371,19 +387,8 @@ The MIT License (MIT)
 
 Copyright (c) 2013 Michael Price
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
