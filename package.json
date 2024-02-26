@@ -1,6 +1,6 @@
 {
   "name": "text-moderate",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "A comprehensive JavaScript library for content moderation, including profanity filtering, sentiment analysis, and toxicity detection. Leveraging advanced algorithms and external APIs, TextModerate provides developers with tools to create safer and more positive online environments. Supports multiple languages for profanity and sentiment analysis, with extendable configurations for custom use cases.",
   "main": "./lib/TextModerate.js",
   "directories": {
