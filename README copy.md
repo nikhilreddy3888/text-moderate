@@ -103,7 +103,7 @@ filter.clean("some sadist hells word!"); //some sadist hells word!
 -   [addWords](#addwords)
 -   [removeWords](#removewords)
 -   [registerLanguage](#registerlanguage)
--   [analyze](#analyze)
+-   [analyzeSentiment](#analyzeSentiment)
 -   [tokenize](#tokenize)
 -   [addLanguage](#addlanguage)
 -   [getLanguage](#getlanguage)
@@ -177,7 +177,7 @@ Registers the specified language.
 -   `languageCode` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Two-digit code for the language to register.
 -   `language` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The language module to register.
 
-#### analyze
+#### analyzeSentiment
 
 Performs sentiment analysis on the provided input 'phrase'.
 
@@ -234,7 +234,7 @@ Applies a scoring strategy for the current token
 **Parameters**
 
 -   `languageCode` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Two-digit language code
--   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Tokens of the phrase to analyze
+-   `tokens` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Tokens of the phrase to analyzeSentiment
 -   `cursor` **int** Cursor of the current token being analyzed
 -   `tokenScore` **int** The score of the current token being analyzed
 

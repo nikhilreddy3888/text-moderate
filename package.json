@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://[your-repository-url].git"
+    "url": "git://github.com/nikhilreddy3888/text-processor.git"
   },
   "keywords": [
     "profanity",
