@@ -1,10 +1,10 @@
 # TextModerate
 
-TextModerate is a JavaScript library developed for text analysis. It integrates profanity/badwords filtering, sentiment analysis, and toxicity detection capabilities. By leveraging the Badwords list, AFINN-165 wordlist, Emoji Sentiment Ranking, and the Perspective API. TextModerate offers a robust toolkit for enhancing content moderation and fostering healthier online interactions.
+TextModerate is a JavaScript library developed for text analysis. It integrates profanity/badwords filtering, sentiment analysis, and toxicity detection capabilities. By leveraging the Badwords lists, AFINN-165 wordlist, Emoji Sentiment Ranking, and the Perspective API. TextModerate offers a robust toolkit for enhancing content moderation and fostering healthier online interactions.
 
 ## Features
 
--   **Profanity Filtering**: Detects and filters out profane/bad words from texts, with options for customization.
+-   **Profanity Filtering**: Detects and filters out profane/bad words from texts, with options for customization. 
 -   **Sentiment Analysis**: Assesses the emotional tone of text using the AFINN-165 wordlist and Emoji Sentiment Ranking.
 -   **Toxicity Detection**: Evaluates text for potential toxicity via the Perspective API, aiming to support positive communication environments. This is interface to call Perspective API developed by Google.
 
